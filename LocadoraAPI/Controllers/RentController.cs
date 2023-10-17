@@ -1,7 +1,7 @@
 ﻿using LocadoraAPI.Entities;
 using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using System;
+using System.Linq;
 
 namespace LocadoraAPI.Controllers
 {
@@ -9,83 +9,99 @@ namespace LocadoraAPI.Controllers
     [ApiController]
     public class RentController : ControllerBase
     {
-        private readonly  RentDbContext _context;
+        private readonly RentDbContext _context;
+
         public RentController(RentDbContext context)
         {
             _context = context;
         }
 
-        // GET: api/<LocadoraController>
+        // GET: api/rent
         [HttpGet]
         public IActionResult GetAll()
         {
-            var rent = _context.Rents.ToList();
-                
-            return Ok(rent);
+            var rents = _context.Rents.ToList();
+            return Ok(rents);
         }
 
-        // GET api/<LocadoraController>/5
+        // GET: api/rent/{id}
         [HttpGet("{id}")]
-        public IActionResult GetById(Guid id)
+        public IActionResult GetById(int id)
         {
-            var rent = _context.Rents.SingleOrDefault(d => d.Id == id);
-
-            if(rent == null)
+            if (id <= 0)
             {
-                return NotFound();
+                return BadRequest("ID inválido.");
             }
+
+            var rent = _context.Rents.SingleOrDefault(r => r.Id == id);
+
+            if (rent == null)
+            {
+                return NotFound("Aluguel não encontrado.");
+            }
+
             return Ok(rent);
-            
         }
 
-        // POST api/<LocadoraController>
+        // POST: api/rent
         [HttpPost]
         public IActionResult Post(Rent rent)
         {
+            if (rent == null)
+            {
+                return BadRequest("Dados de aluguel inválidos.");
+            }
+
+            if (_context.Rents.Any(r => r.Id == rent.Id))
+            {
+                return Conflict("Já existe um aluguel com este ID.");
+            }
+
             _context.Rents.Add(rent);
-
-            return CreatedAtAction(nameof(GetById), new {id = rent.Id, rent});
+            return CreatedAtAction("GetById", new { id = rent.Id }, rent);
         }
 
-        // PUT api/<LocadoraController>/5
+        // PUT: api/rent/{id}
         [HttpPut("{id}")]
-        public IActionResult Update(Guid id, Rent input)
+        public IActionResult Update(int id, Rent input)
         {
-            var rent = _context.Rents.SingleOrDefault(d => d.Id == id);
+            if (id <= 0)
+            {
+                return BadRequest("ID inválido.");
+            }
+
+            var rent = _context.Rents.SingleOrDefault(r => r.Id == id);
 
             if (rent == null)
             {
-                return NotFound();
+                return NotFound("Aluguel não encontrado.");
             }
+
             rent.Update(input.Vehicle, input.StartDate, input.EndDate, input.Price);
+            
 
             return NoContent();
         }
 
-        // DELETE api/<LocadoraController>/5
+        // DELETE: api/rent/{id}
         [HttpDelete("{id}")]
-        public IActionResult Delete(Guid id)
+        public IActionResult Delete(int id)
         {
-            var rent = _context.Rents.SingleOrDefault(d => d.Id == id);
+            if (id <= 0)
+            {
+                return BadRequest("ID inválido.");
+            }
+
+            var rent = _context.Rents.SingleOrDefault(r => r.Id == id);
 
             if (rent == null)
             {
-                return NotFound();
+                return NotFound("Aluguel não encontrado.");
             }
+
             _context.Rents.Remove(rent);
-            return NoContent();
-        }
+            
 
-        [HttpPut("id")]
-        public IActionResult ChangeStatus(Guid id, bool status)
-        {
-            var rent = _context.Rents.SingleOrDefault(d => d.Id == id);
-
-            if (rent == null)
-            {
-                return NotFound();
-            }
-            rent.ChangeStatus(status);
             return NoContent();
         }
     }

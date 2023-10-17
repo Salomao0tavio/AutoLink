@@ -4,7 +4,7 @@ namespace LocadoraAPI.Entities
 {
     public class Vehicle
     {
-        public Guid Placa { get; set; }
+        public string Placa { get; set; }
 
         public string Modelo { get; set; }
 
@@ -12,9 +12,11 @@ namespace LocadoraAPI.Entities
 
         public int Ano { get; set; }
 
-        public List<Rent> Rents { get; set; }
+        public List<Rent>? Rents { get; set; }
 
-        public Vehicle(Guid placa, string modelo, string marca, int ano) {
+        public bool Disponibilidade { get; set; }
+
+        public Vehicle(string placa, string modelo, string marca, int ano) {
             Placa = placa;
             Modelo = modelo;
             Marca = marca;
@@ -24,7 +26,7 @@ namespace LocadoraAPI.Entities
 
  
 
-        public void Update(Guid placa, string modelo, string marca, int ano) {
+        public void Update(string placa, string modelo, string marca, int ano) {
             Placa = placa;
             Modelo = modelo;
             Marca = marca;

@@ -4,7 +4,7 @@ namespace LocadoraAPI.Entities
 {
     public class Rent
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
         public int CustomerId { get; set; }
 
