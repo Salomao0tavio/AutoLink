@@ -26,12 +26,8 @@ namespace LocadoraAPI.Controllers
 
         // GET: api/rent/{id}
         [HttpGet("{id}")]
-        public IActionResult GetById(int id)
-        {
-            if (id <= 0)
-            {
-                return BadRequest("ID inválido.");
-            }
+        public IActionResult GetById(int id)        {
+            
 
             var rent = _context.Rents.SingleOrDefault(r => r.Id == id);
 
@@ -52,6 +48,11 @@ namespace LocadoraAPI.Controllers
                 return BadRequest("Dados de aluguel inválidos.");
             }
 
+            if (rent.Id <= 0)
+            {
+                return BadRequest("ID inválido.");
+            }
+
             if (_context.Rents.Any(r => r.Id == rent.Id))
             {
                 return Conflict("Já existe um aluguel com este ID.");
@@ -65,11 +66,7 @@ namespace LocadoraAPI.Controllers
         [HttpPut("{id}")]
         public IActionResult Update(int id, Rent input)
         {
-            if (id <= 0)
-            {
-                return BadRequest("ID inválido.");
-            }
-
+            
             var rent = _context.Rents.SingleOrDefault(r => r.Id == id);
 
             if (rent == null)
@@ -87,11 +84,6 @@ namespace LocadoraAPI.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            if (id <= 0)
-            {
-                return BadRequest("ID inválido.");
-            }
-
             var rent = _context.Rents.SingleOrDefault(r => r.Id == id);
 
             if (rent == null)
