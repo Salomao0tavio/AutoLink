@@ -2,7 +2,7 @@
 
 namespace LocadoraAPI.Entities
 {
-    public class Vehicle
+    public class Veiculo
     {
         public string Placa { get; set; }
 
@@ -12,26 +12,24 @@ namespace LocadoraAPI.Entities
 
         public int Ano { get; set; }
 
-        public List<Rent>? Rents { get; set; }
+        public List<Aluguel>? Alugueis = new List<Aluguel>(); 
 
         public bool Disponibilidade { get; set; }
 
-        public Vehicle(string placa, string modelo, string marca, int ano) {
+        public string Categoria { get; set; }
+
+        public Veiculo(string placa, string modelo, string marca, int ano) {
             Placa = placa;
             Modelo = modelo;
             Marca = marca;
             Ano = ano;
-            Rents = new List<Rent>();
         }    
-
- 
 
         public void Update(string placa, string modelo, string marca, int ano) {
             Placa = placa;
             Modelo = modelo;
             Marca = marca;
             Ano = ano;
-            Rents = new List<Rent>();
         }  
 
         

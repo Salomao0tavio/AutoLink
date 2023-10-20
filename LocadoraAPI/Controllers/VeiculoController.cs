@@ -8,11 +8,11 @@ namespace LocadoraAPI.Controllers
 {
     [Route("api/vehicle")]
     [ApiController]
-    public class VehicleController : ControllerBase
+    public class VeiculoController : ControllerBase
     {
-        private readonly VehicleDbContext _context;
+        private readonly VeiculoDbContext _context;
 
-        public VehicleController(VehicleDbContext context)
+        public VeiculoController(VeiculoDbContext context)
         {
             _context = context;
         }
@@ -37,7 +37,7 @@ namespace LocadoraAPI.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post(Vehicle vehicle)
+        public IActionResult Post(Veiculo vehicle)
         {
             if (vehicle == null)
             {

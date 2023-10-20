@@ -1,0 +1,51 @@
+﻿Aluguel Controller________FEITO
+
+1. GET /alugueis: Recupere a lista de todos os aluguéis.
+2. GET /alugueis/{id}: Recupere detalhes de um aluguel específico por ID.
+3. POST /alugueis: Crie um novo aluguel.
+4. PUT /alugueis/{id}: Atualize os detalhes de um aluguel existente por ID (por exemplo, para registrar a devolução).
+5. DELETE /alugueis/{id}: Exclua um aluguel por ID.
+
+Veículo Controller_______FEITO->ATE O 5
+
+1. GET /veiculos: Recupere a lista de todos os veículos.
+2. GET /veiculos/{id}: Recupere detalhes de um veículo específico por ID.
+3. POST /veiculos: Crie um novo veículo.
+4. PUT /veiculos/{id}: Atualize os detalhes de um veículo existente por ID.
+5. DELETE /veiculos/{id}: Exclua um veículo por ID.
+6. GET /veiculos/disponiveis: Recupere a lista de veículos disponíveis para aluguel.
+7. GET /veiculos/alugados: Recupere a lista de veículos atualmente alugados.
+8. GET /veiculos/manutencao: Recupere a lista de veículos em manutenção.
+9. POST /veiculos/{id}/manutencao: Registre um veículo em manutenção.
+10. POST /veiculos/{id}/sair-manutencao: Marque um veículo como pronto após a manutenção.
+
+Cliente Controller:
+
+1. GET /clientes: Recupere a lista de todos os clientes.
+2. GET /clientes/{id}: Recupere detalhes de um cliente específico por ID.
+3. POST /clientes: Crie um novo cliente.
+4. PUT /clientes/{id}: Atualize os detalhes de um cliente existente por ID.
+5. DELETE /clientes/{id}: Exclua um cliente por ID.
+6. GET /clientes/{id}/alugueis: Recupere os aluguéis associados a um cliente específico.
+
+Funcionário Controller:
+
+1. GET /funcionarios: Recupere a lista de todos os funcionários.
+2. GET /funcionarios/{id}: Recupere detalhes de um funcionário específico por ID.
+3. POST /funcionarios: Crie um novo funcionário.
+4. PUT /funcionarios/{id}: Atualize os detalhes de um funcionário existente por ID.
+5. DELETE /funcionarios/{id}: Exclua um funcionário por ID.
+6. GET /funcionarios/{id}/alugueis: Recupere os aluguéis associados a um funcionário específico.
+
+Relatórios Controller:
+
+1. GET /relatorios/vendas: Gere um relatório de vendas que mostra informações sobre os aluguéis, como receita total, aluguéis por categoria, aluguéis por período, etc.
+2. GET /relatorios/estatisticas: Gere estatísticas sobre o uso de veículos, como os veículos mais populares, a taxa de utilização, etc.
+
+Registro de Manutenção Controller:
+
+1. GET /manutencao: Recupere a lista de registros de manutenção para veículos.
+2. GET /manutencao/{id}: Recupere detalhes de um registro de manutenção específico por ID.
+3. POST /manutencao: Registre uma nova entrada de manutenção para um veículo.
+4. PUT /manutencao/{id}: Atualize os detalhes de um registro de manutenção existente por ID.
+5. DELETE /manutencao/{id}: Exclua um registro de manutenção por ID.

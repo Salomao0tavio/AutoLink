@@ -7,11 +7,11 @@ namespace LocadoraAPI.Controllers
 {
     [Route("api/rent")]
     [ApiController]
-    public class RentController : ControllerBase
+    public class AluguelController : ControllerBase
     {
-        private readonly RentDbContext _context;
+        private readonly AluguelDbContext _context;
 
-        public RentController(RentDbContext context)
+        public AluguelController(AluguelDbContext context)
         {
             _context = context;
         }
@@ -41,7 +41,7 @@ namespace LocadoraAPI.Controllers
 
         // POST: api/rent
         [HttpPost]
-        public IActionResult Post(Rent rent)
+        public IActionResult Post(Aluguel rent)
         {
             if (rent == null)
             {
@@ -64,7 +64,7 @@ namespace LocadoraAPI.Controllers
 
         // PUT: api/rent/{id}
         [HttpPut("{id}")]
-        public IActionResult Update(int id, Rent input)
+        public IActionResult Update(int id, Aluguel input)
         {
             
             var rent = _context.Rents.SingleOrDefault(r => r.Id == id);
@@ -74,7 +74,7 @@ namespace LocadoraAPI.Controllers
                 return NotFound("Aluguel não encontrado.");
             }
 
-            rent.Update(input.Vehicle, input.StartDate, input.EndDate, input.Price);
+            rent.Update(input.Veiculo, input.DataInicio, input.DataFim, input.Preco);
             
 
             return NoContent();

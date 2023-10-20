@@ -3,8 +3,8 @@ using LocadoraAPI.Repositories;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddSingleton<RentDbContext>();
-builder.Services.AddSingleton<VehicleDbContext>();
+builder.Services.AddSingleton<AluguelDbContext>();
+builder.Services.AddSingleton<VeiculoDbContext>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
