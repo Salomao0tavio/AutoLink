@@ -1,6 +1,6 @@
 ﻿namespace LocadoraAPI.Enums
 {
-    public enum StatusAluguel
+    public enum RentalStatus
     {
         AGENDADO,
         EM_ANDAMENTO,

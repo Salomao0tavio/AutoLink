@@ -1,6 +1,6 @@
 ﻿namespace LocadoraAPI.Enums
 {
-    public enum CargoFuncionario
+    public enum EmployePosition
     {
         VENDEDOR,
         SUPORTE,

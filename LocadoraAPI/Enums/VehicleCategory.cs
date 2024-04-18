@@ -1,10 +1,10 @@
 ﻿namespace LocadoraAPI.Enums
 {
-    public enum CategoriaVeiculo
+    public enum VehicleCategory
     {
         POPULAR,
         ECONOMICO,
-        IINTERMEDIARIO,
+        INTERMEDIARIO,
         LUXO,
         SUV,
         SEDAN,
