@@ -1,2 +1,2 @@
 # Locadora
-Projeto pessoal de uma API para uma Locadora de veiculos
+Projeto pessoal para uma Locadora de veiculos contando com Front e Backend
