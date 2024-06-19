@@ -1,7 +1,7 @@
-﻿using LocadoraAPI.Models.CreateModels;
+﻿using Models.CreateModels;
 using System;
 
-namespace LocadoraAPI.Entities
+namespace Models
 {
     public class Rental
     {
@@ -15,11 +15,11 @@ namespace LocadoraAPI.Entities
 
         public Rental()
         {
-            ID = Guid.NewGuid(); 
+            ID = Guid.NewGuid();
         }
 
         public Rental(Guid clientId, DateTime beginDate, DateTime? endDate, decimal price, string status, Vehicle vehicle)
-            : this() 
+            : this()
         {
             ClientID = clientId;
             BeginDate = beginDate;

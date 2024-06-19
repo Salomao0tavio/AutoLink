@@ -1,20 +1,26 @@
-﻿using LocadoraAPI.Entities;
-using LocadoraAPI.Interfaces;
+﻿using Data;
+using Models;
+using Interfaces;
 
-namespace LocadoraAPI.Services
+namespace Services
 {
     public class RentalService : IRentalService
     {
-    
+        private readonly Context _context;
+
+        public RentalService(Context context)
+        {
+            _context = context;
+        }
 
         public IEnumerable<Rental> GetAllRentals()
         {
-            throw new NotImplementedException();
+            return _context.Rentals;
         }
 
         public int GetTotalVehicles()
         {
-            throw new NotImplementedException();
+            return _context.Vehicles.Count();
         }
     }
 }

@@ -1,6 +1,6 @@
-using LocadoraAPI.Interfaces;
-using LocadoraAPI.Repositories;
-using LocadoraAPI.Services;
+using Data;
+using Interfaces;
+using Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

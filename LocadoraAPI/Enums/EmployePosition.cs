@@ -1,9 +1,9 @@
-﻿namespace LocadoraAPI.Enums
+﻿namespace Enums
 {
     public enum EmployePosition
     {
         VENDEDOR,
         SUPORTE,
-        GERENTE            
+        GERENTE
     }
 }

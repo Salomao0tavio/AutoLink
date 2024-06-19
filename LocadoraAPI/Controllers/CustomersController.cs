@@ -1,12 +1,10 @@
-﻿using LocadoraAPI.Entities;
-using LocadoraAPI.Models.CreateModels;
-using LocadoraAPI.Repositories;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Linq;
+﻿using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
+using Data;
+using Models.CreateModels;
+using Models;
 
-namespace LocadoraAPI.Controllers
+namespace Controllers
 {
     /// <summary>
     /// Controller para gerenciar operações relacionadas a clientes.
@@ -29,7 +27,10 @@ namespace LocadoraAPI.Controllers
         /// <summary>
         /// Obtém todos os clientes.
         /// </summary>
+        /// <returns>Lista de todos os clientes.</returns>
         [HttpGet]
+        [SwaggerOperation(Summary = "Obtém todos os clientes.")]
+        [SwaggerResponse(StatusCodes.Status200OK, "Lista de todos os clientes retornada com sucesso.")]
         public IActionResult GetAll()
         {
             return Ok(_context.Customers.ToList());
@@ -38,7 +39,12 @@ namespace LocadoraAPI.Controllers
         /// <summary>
         /// Obtém um cliente por ID.
         /// </summary>
+        /// <param name="id">ID do cliente.</param>
+        /// <returns>Detalhes do cliente especificado.</returns>
         [HttpGet("{id}")]
+        [SwaggerOperation(Summary = "Obtém um cliente por ID.")]
+        [SwaggerResponse(StatusCodes.Status200OK, "Detalhes do cliente retornados com sucesso.")]
+        [SwaggerResponse(StatusCodes.Status404NotFound, "Cliente não encontrado.")]
         public IActionResult GetById(int id)
         {
             var customer = _context.Customers.Find(id);
@@ -54,9 +60,19 @@ namespace LocadoraAPI.Controllers
         /// <summary>
         /// Cria um novo cliente.
         /// </summary>
+        /// <param name="customer">Dados do cliente a ser criado.</param>
+        /// <returns>Status de criação do cliente.</returns>
         [HttpPost]
+        [SwaggerOperation(Summary = "Cria um novo cliente.")]
+        [SwaggerResponse(StatusCodes.Status201Created, "Cliente criado com sucesso.")]
+        [SwaggerResponse(StatusCodes.Status400BadRequest, "Dados de cliente inválidos.")]
         public IActionResult Create(CustomerCreateModel customer)
         {
+            if (customer == null)
+            {
+                return BadRequest("Dados de cliente inválidos.");
+            }
+
             _context.Customers.Add(Customer.Parse(customer));
             _context.SaveChanges();
             return StatusCode(StatusCodes.Status201Created);
@@ -65,7 +81,12 @@ namespace LocadoraAPI.Controllers
         /// <summary>
         /// Remove um cliente por ID.
         /// </summary>
+        /// <param name="id">ID do cliente a ser removido.</param>
+        /// <returns>Status de remoção do cliente.</returns>
         [HttpDelete("{id}")]
+        [SwaggerOperation(Summary = "Remove um cliente por ID.")]
+        [SwaggerResponse(StatusCodes.Status200OK, "Cliente removido com sucesso.")]
+        [SwaggerResponse(StatusCodes.Status404NotFound, "Cliente não encontrado.")]
         public IActionResult Delete(int id)
         {
             var customer = _context.Customers.Find(id);
@@ -83,10 +104,20 @@ namespace LocadoraAPI.Controllers
         /// <summary>
         /// Obtém os aluguéis de um cliente por ID.
         /// </summary>
+        /// <param name="id">ID do cliente.</param>
+        /// <returns>Lista de aluguéis do cliente especificado.</returns>
         [HttpGet("{id}/alugueis")]
+        [SwaggerOperation(Summary = "Obtém os aluguéis de um cliente por ID.")]
+        [SwaggerResponse(StatusCodes.Status200OK, "Lista de aluguéis do cliente retornada com sucesso.")]
+        [SwaggerResponse(StatusCodes.Status404NotFound, "Cliente não encontrado.")]
         public IActionResult GetRents(int id)
         {
-            var customer = _context.Customers.Find(id) ?? throw new ArgumentNullException("Cliente não encontrado.");
+            var customer = _context.Customers.Find(id);
+
+            if (customer == null)
+            {
+                return NotFound("Cliente não encontrado.");
+            }
 
             return Ok(customer.Rentals);
         }

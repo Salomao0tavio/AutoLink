@@ -1,6 +1,6 @@
-﻿using LocadoraAPI.Entities;
+﻿using Models;
 
-namespace LocadoraAPI.Interfaces
+namespace Interfaces
 {
     public interface IRentalService
     {
@@ -8,6 +8,6 @@ namespace LocadoraAPI.Interfaces
         public int GetTotalVehicles();
 
         public IEnumerable<Rental> GetAllRentals();
-        
+
     }
 }

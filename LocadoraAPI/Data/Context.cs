@@ -1,7 +1,7 @@
-﻿using LocadoraAPI.Entities;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Models;
 
-namespace LocadoraAPI.Repositories
+namespace Data
 {
     public class Context : DbContext
     {

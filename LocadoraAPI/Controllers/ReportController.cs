@@ -1,15 +1,14 @@
-﻿using LocadoraAPI.Interfaces;
+﻿using Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using Swashbuckle.AspNetCore.Annotations;
 
-namespace LocadoraAPI.Controllers
+namespace Controllers
 {
     /// <summary>
     /// Controller para gerenciar operações relacionadas a relatórios.
     /// </summary>
     [Route("api/relatorios")]
+    [ApiController]
     public class ReportController : Controller
     {
         private readonly IRentalService _rentalService;
@@ -26,7 +25,11 @@ namespace LocadoraAPI.Controllers
         /// <summary>
         /// Obtém o relatório de vendas, incluindo receita total, aluguéis por categoria e aluguéis por período.
         /// </summary>
+        /// <returns>Relatório de vendas.</returns>
         [HttpGet("vendas")]
+        [SwaggerOperation(Summary = "Obtém o relatório de vendas, incluindo receita total, aluguéis por categoria e aluguéis por período.")]
+        [SwaggerResponse(200, "Relatório de vendas gerado com sucesso.")]
+        [SwaggerResponse(500, "Erro interno do servidor.")]
         public IActionResult GetSalesReport()
         {
             var rentals = _rentalService.GetAllRentals();
@@ -54,7 +57,11 @@ namespace LocadoraAPI.Controllers
         /// <summary>
         /// Obtém as estatísticas, incluindo os veículos mais populares e a taxa de utilização.
         /// </summary>
+        /// <returns>Estatísticas dos veículos.</returns>
         [HttpGet("estatisticas")]
+        [SwaggerOperation(Summary = "Obtém as estatísticas, incluindo os veículos mais populares e a taxa de utilização.")]
+        [SwaggerResponse(200, "Estatísticas geradas com sucesso.")]
+        [SwaggerResponse(500, "Erro interno do servidor.")]
         public IActionResult GetStatistics()
         {
             var rentals = _rentalService.GetAllRentals();

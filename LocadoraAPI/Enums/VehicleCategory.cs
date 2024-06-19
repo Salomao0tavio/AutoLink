@@ -1,4 +1,4 @@
-﻿namespace LocadoraAPI.Enums
+﻿namespace Enums
 {
     public enum VehicleCategory
     {

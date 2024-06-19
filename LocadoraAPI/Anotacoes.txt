@@ -6,11 +6,8 @@ Relatórios Controller:
 
 Registro de Manutenção Controller:
 
-1. GET /manutencao: Recupere a lista de registros de manutenção para veículos.
 2. GET /manutencao/{id}: Recupere detalhes de um registro de manutenção específico por ID.
-3. POST /manutencao: Registre uma nova entrada de manutenção para um veículo.
 4. PUT /manutencao/{id}: Atualize os detalhes de um registro de manutenção existente por ID.
-5. DELETE /manutencao/{id}: Exclua um registro de manutenção por ID.
 
 
 Rent Service:

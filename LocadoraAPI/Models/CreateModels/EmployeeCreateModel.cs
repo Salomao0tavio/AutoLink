@@ -1,6 +1,6 @@
-﻿using LocadoraAPI.Enums;
+﻿using Enums;
 
-namespace LocadoraAPI.Models.CreateModels
+namespace Models.CreateModels
 {
     public class EmployeeCreateModel
     {

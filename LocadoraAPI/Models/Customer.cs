@@ -1,8 +1,8 @@
-﻿using LocadoraAPI.Models.CreateModels;
+﻿using Models.CreateModels;
 using System;
 using System.Collections.Generic;
 
-namespace LocadoraAPI.Entities
+namespace Models
 {
     public class Customer
     {

@@ -1,9 +1,9 @@
-﻿using LocadoraAPI.Enums;
-using LocadoraAPI.Models.CreateModels;
+﻿using Enums;
+using Models.CreateModels;
 using System;
 using System.Collections.Generic;
 
-namespace LocadoraAPI.Entities
+namespace Models
 {
     public class Employee
     {
@@ -12,12 +12,12 @@ namespace LocadoraAPI.Entities
         public EmployePosition Position { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
-        public List<Rental>? Rentals { get; set; } 
+        public List<Rental>? Rentals { get; set; }
 
-       
+
         public Employee()
         {
-            Id = Guid.NewGuid(); 
+            Id = Guid.NewGuid();
             Rentals = new List<Rental>();
         }
 

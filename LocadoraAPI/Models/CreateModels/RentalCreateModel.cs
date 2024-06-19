@@ -1,4 +1,4 @@
-﻿namespace LocadoraAPI.Models.CreateModels
+﻿namespace Models.CreateModels
 {
     public class RentalCreateModel
     {

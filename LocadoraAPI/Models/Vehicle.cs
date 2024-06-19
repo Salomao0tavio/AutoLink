@@ -1,6 +1,6 @@
-﻿using LocadoraAPI.Entities;
-using LocadoraAPI.Enums;
-using LocadoraAPI.Models.CreateModels;
+﻿using Enums;
+using Models;
+using Models.CreateModels;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
