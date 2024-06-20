@@ -6,13 +6,14 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import { Home } from './pages/home';
-import { Cars } from './pages/carros';
 import Header from './components/Header';
-import { Rents } from './pages/alugueis';
-import { Clients } from './pages/clientes';
-import { Reports } from './pages/relatorios';
-import { Maintence } from './pages/manutencao';
+import { Clients } from './pages/clientes/clientes';
+import { Reports } from './pages/relatorios/relatorios';
+import { Maintence } from './pages/manutencao/manutencao';
 import { ThemeProvider } from "@material-tailwind/react";
+import { Cars } from './pages/carros/page';
+import { Rents } from './pages/aluguel/aluguel';
+import CarDetails from './pages/carros/detalhes/carDetails';
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
     path: "/relatorios",
     element: <Reports />,
   },
+  {
+    path: "/carro/detalhes/:id" ,
+    element: <CarDetails />
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(

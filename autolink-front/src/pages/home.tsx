@@ -1,4 +1,4 @@
-import FuncionalityCard from '../components/FuncionalityCard';
+import FuncionalityCard from '../components/Cards/FuncionalityCard';
 
 export function Home() {
    
