@@ -7,12 +7,12 @@ import {
 } from "react-router-dom";
 import { Home } from './pages/home';
 import Header from './components/Header';
-import { Clients } from './pages/clientes/clientes';
+import { Clients } from './pages/clientes/page';
 import { Reports } from './pages/relatorios/relatorios';
 import { Maintenance } from './pages/manutencao/manutencao';
 import { ThemeProvider } from "@material-tailwind/react";
 import { Cars } from './pages/carros/page';
-import { Rents } from './pages/aluguel/aluguel';
+import  Rents  from './pages/aluguel/page';
 import CarDetails from './pages/carros/detalhes/carDetails';
 
 const router = createBrowserRouter([

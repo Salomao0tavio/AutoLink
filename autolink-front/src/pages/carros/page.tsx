@@ -45,7 +45,7 @@ export const Cars = () => {
 
     return (
         <>
-            <h1 className="text-center font-medium text-4xl text-teal-900 pt-5 pb-10 ">Carros</h1>
+             <h1 className="text-center font-semibold text-4xl text-teal-900 pt-5 pb-10 ">Carros</h1>
             <div className="m-2 fixed right-2 bottom-2 ">
                 <Button onClick={handleAddCar} label="Adicionar Carro" />
             </div>
