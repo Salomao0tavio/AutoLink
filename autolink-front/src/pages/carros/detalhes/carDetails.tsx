@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { mockCars } from '../data';
+import { mockCars } from '../data/data';
 
 interface CarDetailsParams {
     id: string;

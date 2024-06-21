@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { mockCars } from './data';
+import { mockCars } from './data/data';
 import Button from '../../components/Buttons/CreateButton';
 import CarList from './carList';
 import Loading from '../../components/Loading';
